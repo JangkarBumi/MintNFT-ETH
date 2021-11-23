@@ -47,6 +47,7 @@ string[] thirdWords = ["Warlock", "Puck", "Juggernaut", "Clinkz", "Chen", "Clock
   function random(string memory input) internal pure returns (uint256) {
       return uint256(keccak256(abi.encodePacked(input)));
   }
+  event NewEpicNFTMinted(address sender, uint256 tokenId);
   // A function our user will hit to get their NFT.
   function makeAnEpicNFT() public {
      // Get the current tokenId, this starts at 0.
@@ -101,5 +102,6 @@ string[] thirdWords = ["Warlock", "Puck", "Juggernaut", "Clinkz", "Chen", "Clock
 
     _tokenIds.increment();
     console.log("An NFT w/ ID %s has been minted to %s", newItemId, msg.sender);
+    emit NewEpicNFTMinted(msg.sender, newItemId);
   }
 }
